@@ -16,11 +16,19 @@ init_react();
 
 // app/root.tsx
 init_react();
+
+// app/styles/app.css
+var app_default = "/build/_assets/app-HMATSJJ4.css";
+
+// app/root.tsx
 var meta = () => ({
   charset: "utf-8",
   title: "New Remix App",
   viewport: "width=device-width,initial-scale=1"
 });
+function links() {
+  return [{ rel: "stylesheet", href: app_default }];
+}
 function App() {
   return /* @__PURE__ */ React.createElement("html", {
     lang: "en"
@@ -28,6 +36,7 @@ function App() {
 }
 export {
   App as default,
+  links,
   meta
 };
-//# sourceMappingURL=/build/root-23SXKPD2.js.map
+//# sourceMappingURL=/build/root-RHOQWYC3.js.map
