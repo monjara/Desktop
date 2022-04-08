@@ -26,9 +26,6 @@ jobs:
       - name: install dependencies
         run: npm install
 
-      - name: remove old generation
-        run: rm -r ./out
-
       - name: Start server and mirror it with wget
         run: |
               npm run dev &
