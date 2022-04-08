@@ -1,6 +1,5 @@
 name: Remix on Github Pages
-on:
-  push:
+on: push:
     branches:
       - main
   pull_request:
@@ -30,7 +29,14 @@ jobs:
         run: |
               npm run dev &
               sleep 20 &&
-              wget --mirror http://localhost:3000 -P out --no-host-directories --page-requisites --adjust-extension
+              wget --mirror \
+                --directory-prefix=out \
+                --no-host-directories \
+                --page-requisites \
+                --adjust-extension \
+                --convert-links \
+                --no-parent \
+                http://localhost:3000
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
