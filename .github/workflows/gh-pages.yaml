@@ -31,6 +31,7 @@ jobs:
               npm run dev &
               sleep 10 &&
               wget --mirror http://localhost:3000 -P out --no-host-directories --page-requisites --adjust-extension
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -40,3 +41,4 @@ jobs:
 
       - name: kill process on 3000
         run: kill $(lsof -t -i:3000)
+
