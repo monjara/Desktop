@@ -29,13 +29,13 @@ jobs:
         run: |
               npm run dev &
               sleep 20 &&
-              wget --mirror 
-                --directory-prefix=out 
-                --no-host-directories 
-                --page-requisites 
-                --adjust-extension 
-                --convert-links 
-                --no-parent 
+              wget --mirror
+                --directory-prefix=out
+                --no-host-directories
+                --page-requisites
+                --adjust-extension
+                --convert-links
+                --no-parent
                 http://localhost:3000
 
       - name: Deploy to GitHub Pages
