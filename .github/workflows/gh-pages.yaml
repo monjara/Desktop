@@ -1,4 +1,4 @@
-name: Remix on Github Pages
+name: Nextjs on Github Pages
 on: 
   push:
     branches:
@@ -27,11 +27,14 @@ jobs:
       - name: install dependencies
         run: npm install
 
-      - name: Start server and mirror it with wget
-        run: |
-              npm run dev &
-              sleep 20 &&
-              wget --mirror --directory-prefix=out --no-host-directories --page-requisites --adjust-extension --convert-links --no-parent http://localhost:3000
+      - name: build app
+        run: npm run build
+
+      - name: export static site
+        run: npm run export
+
+      - name: add nojekyll
+        run: touch ./out/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -39,7 +42,4 @@ jobs:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
           external_repository: monjara/Desktop
-
-      - name: kill process on 3000
-        run: kill $(lsof -t -i:3000)
 
