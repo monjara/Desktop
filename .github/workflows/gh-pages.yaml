@@ -26,7 +26,7 @@ jobs:
         run: yarn run build
 
       - name: add nojekyll
-        run: touch ./out/.nojekyll
+        run: touch out/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
