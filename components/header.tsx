@@ -23,8 +23,8 @@ export default function Header() {
   }, [currentTime])
 
   return (
-    <div className="h-9 w-full bg-black flex justify-center">
-      <p className="my-auto text-white text-lg">{displayTime}</p>
+    <div className='h-9 w-full bg-black flex justify-center'>
+      <p className='my-auto text-white text-lg'>{displayTime}</p>
     </div>
   )
 }
