@@ -16,22 +16,20 @@ jobs:
         with:
           node-version: '16'
 
-      - name: cache dependencies
-        uses: actions/cache@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          node-version: '16'
+          cache: yarn
 
       - name: install dependencies
-        run: npm install
+        run: yarn install
 
       - name: build app
-        run: npm run build
+        run: yarn run build
 
       - name: export static site
-        run: npm run export
+        run: yarn run export
 
       - name: add nojekyll
         run: touch ./out/.nojekyll
