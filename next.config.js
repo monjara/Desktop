@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
+const urlPrefix = process.env.NODE_ENV === "production" ? "/Desktop" : ""
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
-  assetPrefix: process.env.NODE_ENV === "production" ? "/Desktop" : "",
+  assetPrefix: urlPrefix,
+  basePath: urlPrefix,
 }
 
 module.exports = nextConfig
