@@ -1,4 +1,5 @@
-import {useState} from "react";
+import { useState } from 'react'
+import Header from './header'
 
 const backgroundImages = [
   'bg-warty-final-ubuntu',
@@ -14,13 +15,14 @@ const backgroundImages = [
   'bg-DSC2943_by_kcpru',
   'bg-canvas_by_roytanck',
   'bg-Optical_Fibers_in_Dark_by_Elena_Stravoravdi',
-];
+]
 
 export default function Desktop() {
-  const [backgroundImageKey, setBackgroundImageKey] = useState(backgroundImages[0]);
+  const [backgroundImageKey, setBackgroundImageKey] = useState(backgroundImages[0])
 
   return (
-      <div className={`h-screen w-screen bg-cover ${backgroundImageKey}`} >
-      </div>
-  );
+    <div className={`h-screen w-screen bg-cover ${backgroundImageKey}`}>
+      <Header />
+    </div>
+  )
 }
