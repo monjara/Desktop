@@ -27,6 +27,9 @@ jobs:
       - name: install dependencies
         run: npm install
 
+      - name: build app
+        run: npm run build
+
       - name: export static site
         run: npm run export
 
