@@ -17,8 +17,8 @@ export default function Header() {
   useEffect(() => {
     const month = currentTime.getMonth() + 1
     const day = currentTime.getDate()
-    const hour = currentTime.getHours()
-    const minute = currentTime.getMinutes()
+    const hour = ('00' + currentTime.getHours().toString()).slice(-2)
+    const minute = ('00' + currentTime.getMinutes().toString()).slice(-2)
     setDisplayTime(`${month}月${day}日 ${hour}:${minute}`)
   }, [currentTime])
 
