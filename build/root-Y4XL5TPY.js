@@ -18,20 +18,20 @@ init_react();
 init_react();
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-HMATSJJ4.css";
+var app_default = "/build/_assets/app-TFUFSUBP.css";
 
 // app/root.tsx
 var meta = () => ({
   charset: "utf-8",
   title: "New Remix App",
-  viewport: "width=device-width,initial-scale=1"
+  viewport: "height=device-height width=device-width,initial-scale=1"
 });
 function links() {
   return [{ rel: "stylesheet", href: app_default }];
 }
 function App() {
   return /* @__PURE__ */ React.createElement("html", {
-    lang: "en"
+    lang: "ja"
   }, /* @__PURE__ */ React.createElement("head", null, /* @__PURE__ */ React.createElement(Meta, null), /* @__PURE__ */ React.createElement(Links, null)), /* @__PURE__ */ React.createElement("body", null, /* @__PURE__ */ React.createElement(Outlet, null), /* @__PURE__ */ React.createElement(ScrollRestoration, null), /* @__PURE__ */ React.createElement(Scripts, null), /* @__PURE__ */ React.createElement(LiveReload, null)));
 }
 export {
@@ -39,4 +39,4 @@ export {
   links,
   meta
 };
-//# sourceMappingURL=/build/root-RHOQWYC3.js.map
+//# sourceMappingURL=/build/root-Y4XL5TPY.js.map

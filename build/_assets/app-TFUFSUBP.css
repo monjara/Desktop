@@ -468,16 +468,42 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+.h-screen {
+  height: 100vh;
 }
 
-.font-bold {
-  font-weight: 700;
+.w-screen {
+  width: 100vw;
 }
 
-.underline {
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
+.bg-ubuntu-default {
+  background-image: url('../../backgrounds/warty-final-ubuntu.png');
+}
+
+.bg-ubuntu-grey {
+  background-image: url('../../backgrounds/ubuntu-default-greyscale-wallpaper.png');
+}
+
+.bg-brad {
+  background-image: url('../../backgrounds/brad-huchteman-stone-mountain.jpg');
+}
+
+.bg-hardy {
+  background-image: url('../../backgrounds/hardy_wallpaper_uhd.png');
+}
+
+.bg-joshua {
+  background-image: url('../../backgrounds/joshua-coleman-something-yellow.jpg');
+}
+
+.bg-matt {
+  background-image: url('../../backgrounds/matt-mcnulty-nyc-2nd-ave.jpg');
+}
+
+.bg-ryan {
+  background-image: url('../../backgrounds/ryan-stone-skykomish-river.jpg');
+}
+
+.bg-cover {
+  background-size: cover;
 }
