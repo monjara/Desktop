@@ -18,7 +18,7 @@ init_react();
 init_react();
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-BIDO7F2X.css";
+var app_default = "/build/_assets/app-EMU7F6W4.css";
 
 // app/root.tsx
 var meta = () => ({
@@ -39,4 +39,4 @@ export {
   links,
   meta
 };
-//# sourceMappingURL=/build/root-TAAOPFOI.js.map
+//# sourceMappingURL=/build/root-Z4UYOSCW.js.map
