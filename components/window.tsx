@@ -12,6 +12,7 @@ type WindowProps = {
 const Window = ({ appId, appName, appContent, toggleAppOpen }: WindowProps) => {
   const [corsorType, setCursorType] = useState('cursor-default')
   const [currentPosition, setCurrentPosition] = useState<ControlPosition>({ x: 120, y: 40 })
+  const [windowArea, setWindowArea] = useState({ width: 'w-2/4', height: 'h-4/5' })
 
   const baseDir = process.env.NODE_ENV === 'production' ? '/Desktop' : ''
 
@@ -21,6 +22,13 @@ const Window = ({ appId, appName, appContent, toggleAppOpen }: WindowProps) => {
 
   const changeCurrentPostion = (_e: DraggableEvent, data: DraggableData) => {
     setCurrentPosition({ x: data.x, y: data.y })
+  }
+
+  const toggleWindowSize = () => {
+    windowArea.width !== 'w-screen'
+      ? (setCurrentPosition({ x: 0, y: -36 }),
+        setWindowArea({ width: 'w-screen', height: 'h-screen' }))
+      : (setCurrentPosition({ x: 120, y: 40 }), setWindowArea({ width: 'w-2/4', height: 'h-4/5' }))
   }
 
   return (
@@ -34,7 +42,7 @@ const Window = ({ appId, appName, appContent, toggleAppOpen }: WindowProps) => {
       onDrag={(e, data) => changeCurrentPostion(e, data)}
       position={currentPosition}
     >
-      <div className='handle w-2/4 h-4/5'>
+      <div className={`handle ${windowArea.width} ${windowArea.height}`}>
         <div className='bg-slate-300 h-8 rounded-t-lg flex justify-center'>
           <p className='text-black text-center m-auto'>{appName}</p>
           <div className='absolute select-none right-0 top-0 mt-1 mr-1 flex justify-center items-center'>
@@ -48,7 +56,10 @@ const Window = ({ appId, appName, appContent, toggleAppOpen }: WindowProps) => {
                 className='h-5 w-5 inline'
               />
             </span>
-            <span className='mx-2 bg-white bg-opacity-0 hover:bg-opacity-10 rounded-full flex justify-center mt-1 h-5 w-5 items-center'>
+            <span
+              onClick={() => toggleWindowSize()}
+              className='mx-2 bg-white bg-opacity-0 hover:bg-opacity-10 rounded-full flex justify-center mt-1 h-5 w-5 items-center'
+            >
               <img
                 src={`${baseDir}/icons/window-maximize-symbolic.svg`}
                 alt='maximize'
