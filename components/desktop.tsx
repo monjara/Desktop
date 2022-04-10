@@ -1,11 +1,12 @@
 import { Fragment, useState } from 'react'
 
-import Vscode from './apps/vscode'
-import Chrome from './apps/chrome'
 import Header from './header'
 import Sidebar from './sidebar'
 import Window from './window'
+import Vscode from './apps/vscode'
+import Chrome from './apps/chrome'
 import Folder from './apps/folder'
+import Setting from './apps/setting'
 
 const backgroundImages = [
   'bg-warty-final-ubuntu',
@@ -45,6 +46,13 @@ export const apps = [
     alt: 'folder',
     src: '/icons/folder.png',
   },
+  {
+    id: 4,
+    appName: 'Setting',
+    appContent: <Setting />,
+    alt: 'setting',
+    src: '/icons/system-settings.png',
+  },
 ]
 
 const Desktop = () => {
@@ -65,7 +73,12 @@ const Desktop = () => {
         const isShow = openAppIds.includes(app.id)
         return isShow ? (
           <Fragment key={index.toString()}>
-            <Window appId={app.id} appName={app.appName} appContent={app.appContent} toggleAppOpen={toggleAppOpen}/>
+            <Window
+              appId={app.id}
+              appName={app.appName}
+              appContent={app.appContent}
+              toggleAppOpen={toggleAppOpen}
+            />
           </Fragment>
         ) : (
           <Fragment key={index.toString()} />
