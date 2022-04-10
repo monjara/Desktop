@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { interval } from 'rxjs'
 
-export default function Header() {
+const Header = () => {
   const [currentTime, setCurrentTime] = useState(new Date())
   const [displayTime, setDisplayTime] = useState('')
 
@@ -23,8 +23,10 @@ export default function Header() {
   }, [currentTime])
 
   return (
-    <div className='h-9 w-full bg-black flex justify-center'>
+    <div className='h-9 w-full bg-black flex justify-center z-30'>
       <p className='my-auto text-white text-lg'>{displayTime}</p>
     </div>
   )
 }
+
+export default Header

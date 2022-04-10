@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Header from './header'
+import Sidebar from './sidebar'
 
 const backgroundImages = [
   'bg-warty-final-ubuntu',
@@ -17,12 +18,15 @@ const backgroundImages = [
   'bg-Optical_Fibers_in_Dark_by_Elena_Stravoravdi',
 ]
 
-export default function Desktop() {
+const Desktop = () => {
   const [backgroundImageKey, setBackgroundImageKey] = useState(backgroundImages[0])
 
   return (
     <div className={`h-screen w-screen bg-cover ${backgroundImageKey}`}>
       <Header />
+      <Sidebar />
     </div>
   )
 }
+
+export default Desktop
