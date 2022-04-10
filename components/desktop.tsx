@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import Draggable, { ControlPosition, DraggableData, DraggableEvent } from 'react-draggable'
+
 import Header from './header'
 import Sidebar from './sidebar'
 
-import Draggable from 'react-draggable'
 
 const backgroundImages = [
   'bg-warty-final-ubuntu',
@@ -23,9 +24,14 @@ const backgroundImages = [
 const Desktop = () => {
   const [backgroundImageKey, setBackgroundImageKey] = useState(backgroundImages[0])
   const [corsorType, setCursorType] = useState('cursor-default')
+  const [currentPosition, setCurrentPosition] = useState<ControlPosition>({ x: 120, y: 40 })
 
   const changeCursorToDefault = () => {
     setCursorType('cursor-default')
+  }
+
+  const changeCurrentPostion = (_e: DraggableEvent, data: DraggableData) => {
+    setCurrentPosition({ x: data.x, y: data.y })
   }
 
   return (
@@ -39,6 +45,8 @@ const Desktop = () => {
         grid={[25, 25]}
         scale={1}
         onStop={changeCursorToDefault}
+        onDrag={(e, data) => changeCurrentPostion(e, data)}
+        position={currentPosition}
       >
         <div className='handle w-2/4 h-4/5 '>
           <div className='bg-black h-8 rounded-t-lg'>

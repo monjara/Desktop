@@ -5,6 +5,7 @@ const nextConfig = {
   trailingSlash: true,
   assetPrefix: urlPrefix,
   basePath: urlPrefix,
+  ignoreBuildErrors: true
 }
 
 module.exports = nextConfig
