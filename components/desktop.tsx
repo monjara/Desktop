@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import Draggable, { ControlPosition, DraggableData, DraggableEvent } from 'react-draggable'
+import { Fragment, useState } from 'react'
+import Vscode from './apps/vscode'
 
 import Header from './header'
 import Sidebar from './sidebar'
-
+import Window from './window'
 
 const backgroundImages = [
   'bg-warty-final-ubuntu',
@@ -21,46 +21,22 @@ const backgroundImages = [
   'bg-Optical_Fibers_in_Dark_by_Elena_Stravoravdi',
 ]
 
+const apps = [{ appName: 'Visual Studio Code', appContent: <Vscode /> }]
+
 const Desktop = () => {
   const [backgroundImageKey, setBackgroundImageKey] = useState(backgroundImages[0])
-  const [corsorType, setCursorType] = useState('cursor-default')
-  const [currentPosition, setCurrentPosition] = useState<ControlPosition>({ x: 120, y: 40 })
-
-  const changeCursorToDefault = () => {
-    setCursorType('cursor-default')
-  }
-
-  const changeCurrentPostion = (_e: DraggableEvent, data: DraggableData) => {
-    setCurrentPosition({ x: data.x, y: data.y })
-  }
 
   return (
     <div className={`h-screen w-screen bg-cover ${backgroundImageKey}`}>
       <Header />
       <Sidebar />
-      <Draggable
-        axis='both'
-        handle='.handle'
-        defaultPosition={{ x: 120, y: 40 }}
-        grid={[25, 25]}
-        scale={1}
-        onStop={changeCursorToDefault}
-        onDrag={(e, data) => changeCurrentPostion(e, data)}
-        position={currentPosition}
-      >
-        <div className='handle w-2/4 h-4/5 '>
-          <div className='bg-black h-8 rounded-t-lg'>
-            <p className='text-white text-center'>Visual Studio Code</p>
-          </div>
-          <div className='h-full bg-white'>
-            <iframe
-              src='https://github1s.com/monjara/Desktop'
-              frameBorder='0'
-              className='h-full w-full bg-ub-cool-grey'
-            />
-          </div>
-        </div>
-      </Draggable>
+      {apps.map((app, index) => {
+        return (
+          <Fragment key={index.toString()}>
+            <Window appName={app.appName} appContent={app.appContent} />
+          </Fragment>
+        )
+      })}
     </div>
   )
 }
