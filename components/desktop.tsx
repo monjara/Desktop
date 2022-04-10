@@ -5,6 +5,7 @@ import Chrome from './apps/chrome'
 import Header from './header'
 import Sidebar from './sidebar'
 import Window from './window'
+import Folder from './apps/folder'
 
 const backgroundImages = [
   'bg-warty-final-ubuntu',
@@ -36,6 +37,13 @@ export const apps = [
     appContent: <Chrome />,
     alt: 'google-chrome',
     src: '/icons/google-chrome.png',
+  },
+  {
+    id: 3,
+    appName: 'Folder',
+    appContent: <Folder />,
+    alt: 'folder',
+    src: '/icons/folder.png',
   },
 ]
 
