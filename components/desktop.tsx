@@ -2,6 +2,8 @@ import { useState } from 'react'
 import Header from './header'
 import Sidebar from './sidebar'
 
+import Draggable from 'react-draggable'
+
 const backgroundImages = [
   'bg-warty-final-ubuntu',
   'bg-jj_light_by_Hiking93',
@@ -20,11 +22,38 @@ const backgroundImages = [
 
 const Desktop = () => {
   const [backgroundImageKey, setBackgroundImageKey] = useState(backgroundImages[0])
+  const [corsorType, setCursorType] = useState('cursor-default')
+
+  const changeCursorToDefault = () => {
+    setCursorType('cursor-default')
+  }
 
   return (
     <div className={`h-screen w-screen bg-cover ${backgroundImageKey}`}>
       <Header />
       <Sidebar />
+      <Draggable
+        axis='both'
+        handle='.handle'
+        defaultPosition={{ x: 120, y: 40 }}
+        position={null}
+        grid={[25, 25]}
+        scale={1}
+        onStop={changeCursorToDefault}
+      >
+        <div className='handle w-2/4 h-4/5 '>
+          <div className='bg-black h-8 rounded-t-lg'>
+            <p className='text-white text-center'>Visual Studio Code</p>
+          </div>
+          <div className='h-full bg-white'>
+            <iframe
+              src='https://github1s.com/monjara/Desktop'
+              frameBorder='0'
+              className='h-full w-full bg-ub-cool-grey'
+            />
+          </div>
+        </div>
+      </Draggable>
     </div>
   )
 }
