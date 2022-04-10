@@ -21,20 +21,38 @@ const backgroundImages = [
   'bg-Optical_Fibers_in_Dark_by_Elena_Stravoravdi',
 ]
 
-const apps = [{ appName: 'Visual Studio Code', appContent: <Vscode /> }]
+export const apps = [
+  {
+    id: 1,
+    appName: 'Visual Studio Code',
+    appContent: <Vscode />,
+    alt: 'vscode',
+    src: '/icons/com.visualstudio.code.png',
+  },
+]
 
 const Desktop = () => {
   const [backgroundImageKey, setBackgroundImageKey] = useState(backgroundImages[0])
+  const [openAppIds, setOpenAppIds] = useState<number[]>([])
+
+  const toggleAppOpen = (id: number) => {
+    openAppIds.includes(id)
+      ? setOpenAppIds(openAppIds.filter((appId) => appId !== id))
+      : setOpenAppIds([id, ...openAppIds])
+  }
 
   return (
     <div className={`h-screen w-screen bg-cover ${backgroundImageKey}`}>
       <Header />
-      <Sidebar />
+      <Sidebar toggleAppOpen={toggleAppOpen} />
       {apps.map((app, index) => {
-        return (
+        const isShow = openAppIds.includes(app.id)
+        return isShow ? (
           <Fragment key={index.toString()}>
             <Window appName={app.appName} appContent={app.appContent} />
           </Fragment>
+        ) : (
+          <Fragment key={index.toString()} />
         )
       })}
     </div>

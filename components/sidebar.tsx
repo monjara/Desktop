@@ -1,13 +1,22 @@
-const apps = [{ alt: 'vscode', src: '/icons/com.visualstudio.code.png' }]
+import React from 'react'
+import { apps } from './desktop'
 
-const Sidebar = () => {
+type SidebarProps = {
+toggleAppOpen: (id: number) => void
+}
+
+const Sidebar = ({toggleAppOpen}: SidebarProps) => {
   const baseDir = process.env.NODE_ENV === 'production' ? '/Desktop' : ''
 
   return (
     <div className='w-24 bg-black opacity-50 absolute top-9 bottom-0 left-0'>
       {apps.map((app, index) => {
         return (
-          <div key={index.toString()} className='w-full h-24 hover:bg-white rounded-2xl'>
+          <div 
+            key={index.toString()} 
+            className='w-full h-24 hover:bg-white rounded-2xl'
+            onClick={() => toggleAppOpen(app.id)}
+          >
             <img
               src={baseDir + app.src}
               alt={app.alt}
@@ -22,4 +31,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default React.memo(Sidebar)
