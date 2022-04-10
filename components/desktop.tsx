@@ -57,7 +57,7 @@ const Desktop = () => {
         const isShow = openAppIds.includes(app.id)
         return isShow ? (
           <Fragment key={index.toString()}>
-            <Window appName={app.appName} appContent={app.appContent} />
+            <Window appId={app.id} appName={app.appName} appContent={app.appContent} toggleAppOpen={toggleAppOpen}/>
           </Fragment>
         ) : (
           <Fragment key={index.toString()} />

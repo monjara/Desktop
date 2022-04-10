@@ -3,11 +3,13 @@ import { ControlPosition, DraggableData, DraggableEvent } from 'react-draggable'
 import DraggableComponent from './utils/draggableComponent'
 
 type WindowProps = {
+  appId: number
   appName: string
   appContent: React.ReactNode
+  toggleAppOpen: (id: number) => void
 }
 
-const Window = ({ appName, appContent }: WindowProps) => {
+const Window = ({ appId, appName, appContent, toggleAppOpen }: WindowProps) => {
   const [corsorType, setCursorType] = useState('cursor-default')
   const [currentPosition, setCurrentPosition] = useState<ControlPosition>({ x: 120, y: 40 })
 
@@ -50,7 +52,10 @@ const Window = ({ appName, appContent }: WindowProps) => {
                 className='h-5 w-5 inline'
               />
             </span>
-            <button className='mx-1.5 focus:outline-none cursor-default bg-ub-orange bg-opacity-90 hover:bg-opacity-100 rounded-full flex justify-center mt-1 h-5 w-5 items-center'>
+            <button
+              onClick={() => toggleAppOpen(appId)}
+              className='mx-1.5 focus:outline-none cursor-default bg-ub-orange bg-opacity-90 hover:bg-opacity-100 rounded-full flex justify-center mt-1 h-5 w-5 items-center'
+            >
               <img
                 src={`${baseDir}/icons/window-close-symbolic.svg`}
                 alt='close'
