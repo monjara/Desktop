@@ -38,7 +38,10 @@ const Window = ({ appId, appName, appContent, toggleAppOpen }: WindowProps) => {
         <div className='bg-slate-300 h-8 rounded-t-lg flex justify-center'>
           <p className='text-black text-center m-auto'>{appName}</p>
           <div className='absolute select-none right-0 top-0 mt-1 mr-1 flex justify-center items-center'>
-            <span className='mx-1.5 bg-white bg-opacity-0 hover:bg-opacity-10 rounded-full flex justify-center mt-1 h-5 w-5 items-center'>
+            <span
+              onClick={() => toggleAppOpen(appId)}
+              className='mx-1.5 bg-white bg-opacity-0 hover:bg-opacity-10 rounded-full flex justify-center mt-1 h-5 w-5 items-center'
+            >
               <img
                 src={`${baseDir}/icons/window-minimize-symbolic.svg`}
                 alt='minimize'
