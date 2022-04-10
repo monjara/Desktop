@@ -31,8 +31,8 @@ const Window = ({ appName, appContent }: WindowProps) => {
       position={currentPosition}
     >
       <div className='handle w-2/4 h-4/5 '>
-        <div className='bg-black h-8 rounded-t-lg'>
-          <p className='text-white text-center'>{appName}</p>
+        <div className='bg-slate-300 h-8 rounded-t-lg flex justify-center'>
+          <p className='text-black text-center m-auto'>{appName}</p>
         </div>
         {appContent}
       </div>
