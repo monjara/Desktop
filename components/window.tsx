@@ -13,6 +13,7 @@ const Window = ({ appId, appName, appContent, toggleAppOpen }: WindowProps) => {
   const [corsorType, setCursorType] = useState('cursor-default')
   const [currentPosition, setCurrentPosition] = useState<ControlPosition>({ x: 120, y: 40 })
   const [windowArea, setWindowArea] = useState({ width: 'w-2/4', height: 'h-4/5' })
+  const [draggDisable, setDraggDisable] = useState(false)
 
   const baseDir = process.env.NODE_ENV === 'production' ? '/Desktop' : ''
 
@@ -27,8 +28,11 @@ const Window = ({ appId, appName, appContent, toggleAppOpen }: WindowProps) => {
   const toggleWindowSize = () => {
     windowArea.width !== 'w-screen'
       ? (setCurrentPosition({ x: 0, y: -36 }),
-        setWindowArea({ width: 'w-screen', height: 'h-screen' }))
-      : (setCurrentPosition({ x: 120, y: 40 }), setWindowArea({ width: 'w-2/4', height: 'h-4/5' }))
+        setWindowArea({ width: 'w-screen', height: 'h-full' }),
+        setDraggDisable(true))
+      : (setCurrentPosition({ x: 120, y: 40 }),
+        setWindowArea({ width: 'w-2/4', height: 'h-4/5' }),
+        setDraggDisable(false))
   }
 
   const ButtonArea = () => {
@@ -87,6 +91,7 @@ const Window = ({ appId, appName, appContent, toggleAppOpen }: WindowProps) => {
       onStop={changeCursorToDefault}
       onDrag={(e, data) => changeCurrentPostion(e, data)}
       position={currentPosition}
+      disabled={draggDisable}
     >
       <div className={`handle ${windowArea.width} ${windowArea.height}`}>
         <WindowHeader />
