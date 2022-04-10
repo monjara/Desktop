@@ -92,8 +92,9 @@ const Window = ({ appId, appName, appContent, toggleAppOpen }: WindowProps) => {
       onDrag={(e, data) => changeCurrentPostion(e, data)}
       position={currentPosition}
       disabled={draggDisable}
+      bounds='parent'
     >
-      <div className={`handle ${windowArea.width} ${windowArea.height}`}>
+      <div className={`absolute handle ${windowArea.width} ${windowArea.height}`}>
         <WindowHeader />
         {appContent}
       </div>
