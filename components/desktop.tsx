@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react'
-import Vscode from './apps/vscode'
 
+import Vscode from './apps/vscode'
+import Chrome from './apps/chrome'
 import Header from './header'
 import Sidebar from './sidebar'
 import Window from './window'
@@ -28,6 +29,13 @@ export const apps = [
     appContent: <Vscode />,
     alt: 'vscode',
     src: '/icons/com.visualstudio.code.png',
+  },
+  {
+    id: 2,
+    appName: 'Google Chrome',
+    appContent: <Chrome />,
+    alt: 'google-chrome',
+    src: '/icons/google-chrome.png',
   },
 ]
 

@@ -14,7 +14,7 @@ const Sidebar = ({toggleAppOpen}: SidebarProps) => {
         return (
           <div 
             key={index.toString()} 
-            className='w-full h-24 hover:bg-white rounded-2xl'
+            className='w-full h-24 hover:bg-white rounded-2xl flex justify-center'
             onClick={() => toggleAppOpen(app.id)}
           >
             <img
