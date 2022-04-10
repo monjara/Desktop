@@ -36,7 +36,6 @@ const Desktop = () => {
         axis='both'
         handle='.handle'
         defaultPosition={{ x: 120, y: 40 }}
-        position={null}
         grid={[25, 25]}
         scale={1}
         onStop={changeCursorToDefault}
