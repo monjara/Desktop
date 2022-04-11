@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { backgroundImages } from './desktop'
 import Window from './window'
 
@@ -12,10 +11,7 @@ const SelectBg = ({ selectBackgoundImage, toggleAppOpen }: SelectBgProps) => {
   const baseDir = urlPrefix + '/backgrounds/'
 
   const AppContent = () => {
-    const [selectedIndex, setSelectedIndex] = useState(NaN)
-
     const selectImage = (index: number) => {
-      setSelectedIndex(index)
       selectBackgoundImage(index)
     }
 
@@ -31,15 +27,7 @@ const SelectBg = ({ selectBackgoundImage, toggleAppOpen }: SelectBgProps) => {
                   className='m-2 justify-center'
                   onClick={() => selectImage(index)}
                 >
-                  {index === selectedIndex ? (
-                    <img
-                      src={`${imagePath}`}
-                      alt={'bg'}
-                      className='rounded-lg border-4 border-orange-500'
-                    />
-                  ) : (
-                    <img src={`${imagePath}`} alt={'bg'} className='m-1' />
-                  )}
+                  <img src={`${imagePath}`} alt={'bg'} className='m-1' />
                 </div>
               )
             })}
