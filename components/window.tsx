@@ -7,9 +7,10 @@ type WindowProps = {
   appName: string
   appContent: React.ReactNode
   toggleAppOpen: (id: number) => void
+  isSetting?: boolean
 }
 
-const Window = ({ appId, appName, appContent, toggleAppOpen }: WindowProps) => {
+const Window = ({ appId, appName, appContent, toggleAppOpen, isSetting }: WindowProps) => {
   const [corsorType, setCursorType] = useState('cursor-default')
   const [currentPosition, setCurrentPosition] = useState<ControlPosition>({ x: 120, y: 40 })
   const [windowArea, setWindowArea] = useState({ width: 'w-2/4', height: 'h-4/5' })
@@ -38,28 +39,32 @@ const Window = ({ appId, appName, appContent, toggleAppOpen }: WindowProps) => {
   const ButtonArea = () => {
     return (
       <div className='absolute select-none right-0 top-0 mt-1 mr-1 flex justify-center items-center'>
-        <span
-          onClick={() => toggleAppOpen(appId)}
-          className='mx-1.5 bg-white bg-opacity-0 hover:bg-opacity-10 rounded-full flex justify-center mt-1 h-5 w-5 items-center'
-        >
-          <img
-            src={`${baseDir}/icons/window-minimize-symbolic.svg`}
-            alt='minimize'
-            className='h-5 w-5 inline'
-          />
-        </span>
-        <span
-          onClick={() => toggleWindowSize()}
-          className='mx-2 bg-white bg-opacity-0 hover:bg-opacity-10 rounded-full flex justify-center mt-1 h-5 w-5 items-center'
-        >
-          <img
-            src={`${baseDir}/icons/window-maximize-symbolic.svg`}
-            alt='maximize'
-            className='h-5 w-5 inline'
-          />
-        </span>
+        {!isSetting && (
+          <>
+            <span
+              onClick={() => toggleAppOpen !== undefined && toggleAppOpen(appId)}
+              className='mx-1.5 bg-white bg-opacity-0 hover:bg-opacity-10 rounded-full flex justify-center mt-1 h-5 w-5 items-center'
+            >
+              <img
+                src={`${baseDir}/icons/window-minimize-symbolic.svg`}
+                alt='minimize'
+                className='h-5 w-5 inline'
+              />
+            </span>
+            <span
+              onClick={() => toggleWindowSize()}
+              className='mx-2 bg-white bg-opacity-0 hover:bg-opacity-10 rounded-full flex justify-center mt-1 h-5 w-5 items-center'
+            >
+              <img
+                src={`${baseDir}/icons/window-maximize-symbolic.svg`}
+                alt='maximize'
+                className='h-5 w-5 inline'
+              />
+            </span>
+          </>
+        )}
         <button
-          onClick={() => toggleAppOpen(appId)}
+          onClick={() => toggleAppOpen !== undefined && toggleAppOpen(appId)}
           className='mx-1.5 focus:outline-none cursor-default bg-ub-orange bg-opacity-90 hover:bg-opacity-100 rounded-full flex justify-center mt-1 h-5 w-5 items-center'
         >
           <img
