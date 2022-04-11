@@ -20,9 +20,9 @@ const SelectBg = ({ selectBackgoundImage, toggleAppOpen }: SelectBgProps) => {
     }
 
     return (
-      <div className='h-full bg-white '>
-        <div className='h-full w-11/12 mx-auto'>
-          <div className='grid grid-cols-1 lg:grid-cols-3'>
+      <div className='h-full bg-white'>
+        <div className='w-11/12 mx-auto'>
+          <div className='pt-6 grid grid-cols-1 lg:grid-cols-3'>
             {backgroundImages.map((bgImage, index) => {
               const imagePath = baseDir + bgImage.filename
               return (
